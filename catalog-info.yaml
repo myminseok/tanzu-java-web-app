@@ -11,6 +11,10 @@ metadata:
     - tanzu
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=tanzu-java-web-app'
+  links:
+    - url: http://tanzu-java-web-app.default.apps.tap.lab.pcfdemo.net
+      title: tanzu-java-web-app
+      icon: dashboard
 spec:
   type: service
   lifecycle: experimental
