@@ -48,7 +48,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- https://springdoc.org/#getting-started 
+			http://localhost:8080/v3/api-docs
+		-->
 
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webmvc-core</artifactId>
+			<version>1.6.12</version>
+		 </dependency>
 	</dependencies>
 
 	<build>
