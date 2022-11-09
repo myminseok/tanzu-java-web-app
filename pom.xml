@@ -49,7 +49,7 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- https://springdoc.org/#getting-started 
-			http://localhost:8080/v3/api-docs
+			openapi.json: http://localhost:9090/v3/api-docs
 		-->
 
 		<dependency>
