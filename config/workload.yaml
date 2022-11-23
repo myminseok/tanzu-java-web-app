@@ -14,7 +14,6 @@ spec:
       ref:
         branch: main
   params:
-    - volumeMounts: tanzu-java-web-app-pvc
     - name: api_descriptor
       value:
         type: openapi
