@@ -10,7 +10,7 @@ public class HelloController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "Greetings from Spring Boot + Tanzus3!- from main";
+		return "Greetings from Spring Boot + Tanzus3!- from dev1";
 	}
 
 }
