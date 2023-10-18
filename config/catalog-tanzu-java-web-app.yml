@@ -9,7 +9,10 @@ metadata:
     - web
     - tanzu
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-web-app'
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=tanzu-java-web-app'
+    'backstage.tanzu.vmware.com/user.default.myminseok@naver.com': 'catalog.entities.read,catalog.entities.update'
+    'backstage.tanzu.vmware.com/user.default.viewer': 'catalog.entities.read'
+    'backstage.tanzu.vmware.com/user.default.editor': 'catalog.entities.read,catalog.entities.update'
   links:
     - url: http://tanzu-java-web.apps.tap.lab.pcfdemo.net
       title: tanzu-java-web-app
