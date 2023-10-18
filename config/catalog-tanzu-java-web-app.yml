@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-java-web-app
+  description: tanzu-java-web-app
+  tags:
+    - app-accelerator
+    - python
+    - web
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-web-app'
+  links:
+    - url: http://tanzu-java-web.apps.tap.lab.pcfdemo.net
+      title: tanzu-java-web-app
+      icon: dashboard
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
+  system: tanzu-java-web-app
