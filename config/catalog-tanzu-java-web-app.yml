@@ -8,8 +8,9 @@ metadata:
     - python
     - web
     - tanzu
-  annotations:
+  annotations: 
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=tanzu-java-web-app'
+    backstage.tanzu.vmware.com/group.default.default-team: 'catalog.entities.read,catalog.entities.update'
     backstage.tanzu.vmware.com/group.default.viewer: 'catalog.entities.read'
     backstage.tanzu.vmware.com/group.default.editor: 'catalog.entities.read,catalog.entities.update'
   links:
