@@ -11,12 +11,14 @@ metadata:
     - tanzu
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=tanzu-java-web-app'
+    backstage.tanzu.vmware.com/user.default.guest: 'catalog.entities.read,catalog.entities.update'
   links:
     - url: http://tanzu-java-web-app.default.apps.tap.lab.pcfdemo.net
       title: tanzu-java-web-app
       icon: dashboard
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: experimental #production
   owner: default-team
-  system: tanzu-java-web-app
+  system: tanzu-java-web-app # tap-gui
+

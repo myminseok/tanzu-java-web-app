@@ -1,0 +1,109 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+    kapp.k14s.io/identity: v1;my-space/serving.knative.dev/Service/tanzu-java-web-app;serving.knative.dev/v1
+    kapp.k14s.io/original: '{"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{"kapp.k14s.io/change-rule":"upsert
+      after upserting servicebinding.io/ServiceBindings","kbld.k14s.io/images":"null\n","ootb.apps.tanzu.vmware.com/apidescriptor-ref":"true","ootb.apps.tanzu.vmware.com/servicebinding-workload":"true"},"labels":{"app.kubernetes.io/component":"run","app.kubernetes.io/part-of":"tanzu-java-web-app","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/use-sonarqube":"true","apps.tanzu.vmware.com/workload-type":"web","carto.run/workload-name":"tanzu-java-web-app","kapp.k14s.io/app":"1703828914508853042","kapp.k14s.io/association":"v1.512e806ea626c2bb684d51aa2ca2f646"},"name":"tanzu-java-web-app","namespace":"my-space"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/minScale":"1","boot.spring.io/version":"2.5.8","conventions.carto.run/applied-conventions":"appliveview-sample/app-live-view-appflavour-check\nspring-boot-convention/auto-configure-actuators-check\nspring-boot-convention/spring-boot\nspring-boot-convention/spring-boot-graceful-shutdown\nspring-boot-convention/spring-boot-web\nspring-boot-convention/spring-boot-actuator\nspring-boot-convention/app-live-view-appflavour-check\nspring-boot-convention/app-live-view-connector-boot\nspring-boot-convention/app-live-view-appflavours-boot","developer.conventions/target-containers":"workload"},"labels":{"app.kubernetes.io/component":"run","app.kubernetes.io/part-of":"tanzu-java-web-app","apps.tanzu.vmware.com/auto-configure-actuators":"false","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/use-sonarqube":"true","apps.tanzu.vmware.com/workload-type":"web","carto.run/workload-name":"tanzu-java-web-app","conventions.carto.run/framework":"spring-boot","tanzu.app.live.view":"true","tanzu.app.live.view.application.actuator.path":"actuator","tanzu.app.live.view.application.actuator.port":"8080","tanzu.app.live.view.application.flavours":"spring-boot","tanzu.app.live.view.application.name":"tanzu-java-web-app"}},"spec":{"containers":[{"env":[{"name":"BP_LOG_LEVEL","value":"DEBUG"},{"name":"JAVA_TOOL_OPTIONS","value":"-Dserver.port=\"8080\"
+      -Dserver.shutdown.grace-period=\"24s\""}],"image":"ghcr.io/myminseok/tap-service/minseok-supply-chain/tanzu-java-web-app-my-space@sha256:04820d5551ad62a08bab13a0c416592e575918845cbaa6fb9ffa25014f126061","name":"workload","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{},"securityContext":{"runAsUser":1000}}],"serviceAccountName":"default"}}}}'
+    kapp.k14s.io/original-diff-md5: e6885a9d0e2288a0978fc5bd501ef4d6
+    kbld.k14s.io/images: |
+      null
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    serving.knative.dev/creator: system:serviceaccount:my-space:default
+    serving.knative.dev/lastModifier: system:serviceaccount:my-space:default
+  creationTimestamp: "2023-12-29T06:18:40Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/component: run
+    app.kubernetes.io/part-of: tanzu-java-web-app
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/use-sonarqube: "true"
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/workload-name: tanzu-java-web-app
+    kapp.k14s.io/app: "1703828914508853042"
+    kapp.k14s.io/association: v1.512e806ea626c2bb684d51aa2ca2f646
+  name: tanzu-java-web-app
+  namespace: my-space
+  resourceVersion: "2130693"
+  uid: 0d913a15-f326-49c2-a949-fc09ba9f68fd
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        boot.spring.io/version: 2.5.8
+        conventions.carto.run/applied-conventions: |-
+          appliveview-sample/app-live-view-appflavour-check
+          spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/spring-boot
+          spring-boot-convention/spring-boot-graceful-shutdown
+          spring-boot-convention/spring-boot-web
+          spring-boot-convention/spring-boot-actuator
+          spring-boot-convention/app-live-view-appflavour-check
+          spring-boot-convention/app-live-view-connector-boot
+          spring-boot-convention/app-live-view-appflavours-boot
+        developer.conventions/target-containers: workload
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: tanzu-java-web-app
+        apps.tanzu.vmware.com/auto-configure-actuators: "false"
+        apps.tanzu.vmware.com/has-tests: "true"
+        apps.tanzu.vmware.com/use-sonarqube: "true"
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: tanzu-java-web-app
+        conventions.carto.run/framework: spring-boot
+        tanzu.app.live.view: "true"
+        tanzu.app.live.view.application.actuator.path: actuator
+        tanzu.app.live.view.application.actuator.port: "8080"
+        tanzu.app.live.view.application.flavours: spring-boot
+        tanzu.app.live.view.application.name: tanzu-java-web-app
+    spec:
+      containerConcurrency: 0
+      containers:
+      - env:
+        - name: BP_LOG_LEVEL
+          value: DEBUG
+        - name: JAVA_TOOL_OPTIONS
+          value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+        image: ghcr.io/myminseok/tap-service/minseok-supply-chain/tanzu-java-web-app-my-space@sha256:04820d5551ad62a08bab13a0c416592e575918845cbaa6fb9ffa25014f126061
+        name: workload
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+status:
+  address:
+    url: http://tanzu-java-web-app.my-space.svc.cluster.local
+  conditions:
+  - lastTransitionTime: "2023-12-29T06:21:11Z"
+    status: "True"
+    type: ConfigurationsReady
+  - lastTransitionTime: "2023-12-29T06:21:18Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2023-12-29T06:21:18Z"
+    status: "True"
+    type: RoutesReady
+  latestCreatedRevisionName: tanzu-java-web-app-00002
+  latestReadyRevisionName: tanzu-java-web-app-00002
+  observedGeneration: 2
+  traffic:
+  - latestRevision: true
+    percent: 100
+    revisionName: tanzu-java-web-app-00002
+  url: https://tanzu-java-web-app-my-space.tap.lab.pcfdemo.net

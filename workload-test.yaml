@@ -12,6 +12,10 @@ metadata:
   annotations:
     autoscaling.knative.dev/minScale: "1"
 spec:
+  build:
+    env:
+    - name: BP_JVM_VERSION
+      value: 19
   source:
     git:
       url: https://github.com/myminseok/tanzu-java-web-app

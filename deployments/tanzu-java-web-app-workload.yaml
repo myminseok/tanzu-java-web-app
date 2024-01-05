@@ -1,0 +1,457 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  annotations:
+    autoscaling.knative.dev/minScale: "1"
+  creationTimestamp: "2023-12-29T05:28:02Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/part-of: tanzu-java-web-app
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/use-sonarqube: "true"
+    apps.tanzu.vmware.com/workload-type: web
+  name: tanzu-java-web-app
+  namespace: my-space
+  resourceVersion: "2573970"
+  uid: bb21b1cb-3b4a-485d-be0f-4a79ddc10184
+spec:
+  env:
+  - name: BP_LOG_LEVEL
+    value: DEBUG
+  params:
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/language: java
+  - name: api_descriptor
+    value:
+      description: A set of API endpoints to manage the resources within the petclinic
+        app.(running on TAP, main)
+      location:
+        path: /v3/api-docs
+      owner: team-petclinic
+      system: pet-clinics
+      type: openapi
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/myminseok/tanzu-java-web-app
+status:
+  conditions:
+  - lastTransitionTime: "2023-12-29T05:28:02Z"
+    message: ""
+    reason: Ready
+    status: "True"
+    type: SupplyChainReady
+  - lastTransitionTime: "2024-01-02T00:59:13Z"
+    message: ""
+    reason: ResourceSubmissionComplete
+    status: "True"
+    type: ResourcesSubmitted
+  - lastTransitionTime: "2024-01-02T06:25:10Z"
+    message: ""
+    reason: HealthyConditionRule
+    status: "True"
+    type: ResourcesHealthy
+  - lastTransitionTime: "2024-01-02T06:25:10Z"
+    message: ""
+    reason: Ready
+    status: "True"
+    type: Ready
+  observedGeneration: 1
+  resources:
+  - conditions:
+    - lastTransitionTime: "2023-12-29T05:28:15Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:28:15Z"
+      message: stored artifact for revision 'main@sha1:70599ad8edfad78f0cf7aeb5da295027b03c5a7e'
+      reason: ReadyCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2023-12-29T05:28:15Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    name: source-provider
+    outputs:
+    - digest: sha256:c47b8233a324e3cc6c33e64f94141324d6b9718571b5b9d1cdfa0113b24b8972
+      lastTransitionTime: "2023-12-29T05:28:15Z"
+      name: url
+      preview: |
+        http://fluxcd-source-controller.flux-system.svc.cluster.local./gitrepository/my-space/tanzu-java-web-app/70599ad8edfad78f0cf7aeb5da295027b03c5a7e.tar.gz
+    - digest: sha256:e7f18df27bba83bae58a1e312557d13d85a327848e82eca860a1620f5c9bec9b
+      lastTransitionTime: "2023-12-29T05:28:15Z"
+      name: revision
+      preview: |
+        main@sha1:70599ad8edfad78f0cf7aeb5da295027b03c5a7e
+    stampedRef:
+      apiVersion: source.toolkit.fluxcd.io/v1beta1
+      kind: GitRepository
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: gitrepositories.source.toolkit.fluxcd.io
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterSourceTemplate
+      name: source-template
+  - conditions:
+    - lastTransitionTime: "2023-12-29T05:29:51Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2024-01-02T06:20:49Z"
+      message: ""
+      reason: ReadyCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T06:20:49Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: source-provider
+    name: source-tester
+    outputs:
+    - digest: sha256:c47b8233a324e3cc6c33e64f94141324d6b9718571b5b9d1cdfa0113b24b8972
+      lastTransitionTime: "2023-12-29T05:29:51Z"
+      name: url
+      preview: |
+        http://fluxcd-source-controller.flux-system.svc.cluster.local./gitrepository/my-space/tanzu-java-web-app/70599ad8edfad78f0cf7aeb5da295027b03c5a7e.tar.gz
+    - digest: sha256:e7f18df27bba83bae58a1e312557d13d85a327848e82eca860a1620f5c9bec9b
+      lastTransitionTime: "2023-12-29T05:29:51Z"
+      name: revision
+      preview: |
+        main@sha1:70599ad8edfad78f0cf7aeb5da295027b03c5a7e
+    stampedRef:
+      apiVersion: carto.run/v1alpha1
+      kind: Runnable
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: runnables.carto.run
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterSourceTemplate
+      name: testing-pipeline
+  - conditions:
+    - lastTransitionTime: "2023-12-29T06:18:16Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: 'condition status: True, message: '
+      reason: MatchedCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: source-tester
+    name: image-provider
+    outputs:
+    - digest: sha256:fc1efd0b7127c68ed3a3e781b62c6052f6de7c7832d2095af06c2083b97e2ac5
+      lastTransitionTime: "2023-12-29T06:18:16Z"
+      name: image
+      preview: |
+        ghcr.io/myminseok/tap-service/minseok-supply-chain/tanzu-java-web-app-my-space@sha256:04820d5551ad62a08bab13a0c416592e575918845cbaa6fb9ffa25014f126061
+    stampedRef:
+      apiVersion: kpack.io/v1alpha2
+      kind: Image
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: images.kpack.io
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterImageTemplate
+      name: kpack-template
+  - conditions:
+    - lastTransitionTime: "2023-12-29T06:23:24Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2024-01-02T06:25:10Z"
+      message: 'condition status: True, message: Tasks Completed: 3 (Failed: 0, Cancelled
+        0), Skipped: 0'
+      reason: MatchedCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T06:25:10Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: image-provider
+    name: image-scanner
+    outputs:
+    - digest: sha256:fc1efd0b7127c68ed3a3e781b62c6052f6de7c7832d2095af06c2083b97e2ac5
+      lastTransitionTime: "2023-12-29T06:23:24Z"
+      name: image
+      preview: |
+        ghcr.io/myminseok/tap-service/minseok-supply-chain/tanzu-java-web-app-my-space@sha256:04820d5551ad62a08bab13a0c416592e575918845cbaa6fb9ffa25014f126061
+    stampedRef:
+      apiVersion: app-scanning.apps.tanzu.vmware.com/v1alpha1
+      kind: ImageVulnerabilityScan
+      name: tanzu-java-web-app-prisma-scan-2mgbl
+      namespace: my-space
+      resource: imagevulnerabilityscans.app-scanning.apps.tanzu.vmware.com
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterImageTemplate
+      name: image-vulnerability-scan-prisma
+  - conditions:
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:47:44Z"
+      message: ""
+      reason: ReadyCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: image-scanner
+    name: config-provider
+    outputs:
+    - digest: sha256:33d73faf27fe48c36cb80ed133c6bb1c869661715b8c54f2121c04a5ef123794
+      lastTransitionTime: "2023-12-29T06:19:52Z"
+      name: config
+      preview: |-
+        metadata:
+            annotations:
+                autoscaling.knative.dev/minScale: "1"
+                boot.spring.io/version: 2.5.8
+                conventions.carto.run/applied-conventions: |-
+                    appliveview-sample/app-live-view-appflavour-check
+                    spring-boot-convention/auto-configure-actuators-check
+                    spring-boot-convention/spring-boot
+                    spring-boot-convention/spring-boot-graceful-shutdown
+                    spring-boot-convention/spring-boot-web
+                    spring-boot-convention/spring-boot-actuator
+                    spring-boot-convention/app-live-view-appflavour-check
+                    spring-boot-convention/app-live-view-connector-boot
+                    spring-boot-convention/app-live-view-appflavours-boot
+                developer.conventions/target-containers: workload
+            labels:
+                app.kubernetes.io/component: run
+                app.kubernetes.io/part-of: tanzu-java-web-app
+                apps.tanzu.vmware.com/auto-configure-actuators: "false"
+                apps.tanzu.vmware.com/has-tests: "true"
+                apps.tanzu.vmware.com/use-sonar
+    stampedRef:
+      apiVersion: conventions.carto.run/v1alpha1
+      kind: PodIntent
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: podintents.conventions.carto.run
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterConfigTemplate
+      name: convention-template
+  - conditions:
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:47:44Z"
+      message: ""
+      reason: AlwaysHealthy
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: config-provider
+    name: app-config
+    outputs:
+    - digest: sha256:a2a2a1859876f52040ab55249f0a300322ad658bd6e4a6fa0d0643e447ba5fc2
+      lastTransitionTime: "2023-12-29T06:19:52Z"
+      name: config
+      preview: "delivery.yml: |\n    apiVersion: serving.knative.dev/v1\n    kind:
+        Service\n    metadata:\n      name: tanzu-java-web-app\n      annotations:\n
+        \       ootb.apps.tanzu.vmware.com/servicebinding-workload: \"true\"\n        ootb.apps.tanzu.vmware.com/apidescriptor-ref:
+        \"true\"\n        kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings\n
+        \     labels:\n        app.kubernetes.io/part-of: tanzu-java-web-app\n        apps.tanzu.vmware.com/has-tests:
+        \"true\"\n        apps.tanzu.vmware.com/use-sonarqube: \"true\"\n        apps.tanzu.vmware.com/workload-type:
+        web\n        app.kubernetes.io/component: run\n        carto.run/workload-name:
+        tanzu-java-web-app\n    spec:\n      template:\n        metadata:\n          annotations:\n
+        \           autoscaling.knative.dev/minScale: \"1\"\n            boot.spring.io/version:
+        2.5.8\n            conventions.carto.run/applied-conventions: |-\n              appliveview-sample/app-live-view-appflavour-check\n
+        \             spring-boot-convention/auto-configure-actuators-check\n         "
+    stampedRef:
+      apiVersion: v1
+      kind: ConfigMap
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: configmaps
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterConfigTemplate
+      name: config-template
+  - conditions:
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:47:44Z"
+      message: ""
+      reason: AlwaysHealthy
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: app-config
+    name: service-bindings
+    outputs:
+    - digest: sha256:a2a2a1859876f52040ab55249f0a300322ad658bd6e4a6fa0d0643e447ba5fc2
+      lastTransitionTime: "2023-12-29T06:19:52Z"
+      name: config
+      preview: "delivery.yml: |\n    apiVersion: serving.knative.dev/v1\n    kind:
+        Service\n    metadata:\n      name: tanzu-java-web-app\n      annotations:\n
+        \       ootb.apps.tanzu.vmware.com/servicebinding-workload: \"true\"\n        ootb.apps.tanzu.vmware.com/apidescriptor-ref:
+        \"true\"\n        kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings\n
+        \     labels:\n        app.kubernetes.io/part-of: tanzu-java-web-app\n        apps.tanzu.vmware.com/has-tests:
+        \"true\"\n        apps.tanzu.vmware.com/use-sonarqube: \"true\"\n        apps.tanzu.vmware.com/workload-type:
+        web\n        app.kubernetes.io/component: run\n        carto.run/workload-name:
+        tanzu-java-web-app\n    spec:\n      template:\n        metadata:\n          annotations:\n
+        \           autoscaling.knative.dev/minScale: \"1\"\n            boot.spring.io/version:
+        2.5.8\n            conventions.carto.run/applied-conventions: |-\n              appliveview-sample/app-live-view-appflavour-check\n
+        \             spring-boot-convention/auto-configure-actuators-check\n         "
+    stampedRef:
+      apiVersion: v1
+      kind: ConfigMap
+      name: tanzu-java-web-app-with-claims
+      namespace: my-space
+      resource: configmaps
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterConfigTemplate
+      name: service-bindings
+  - conditions:
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:47:44Z"
+      message: ""
+      reason: AlwaysHealthy
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: service-bindings
+    name: api-descriptors
+    outputs:
+    - digest: sha256:a2a2a1859876f52040ab55249f0a300322ad658bd6e4a6fa0d0643e447ba5fc2
+      lastTransitionTime: "2023-12-29T06:19:52Z"
+      name: config
+      preview: "delivery.yml: |\n    apiVersion: serving.knative.dev/v1\n    kind:
+        Service\n    metadata:\n      name: tanzu-java-web-app\n      annotations:\n
+        \       ootb.apps.tanzu.vmware.com/servicebinding-workload: \"true\"\n        ootb.apps.tanzu.vmware.com/apidescriptor-ref:
+        \"true\"\n        kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings\n
+        \     labels:\n        app.kubernetes.io/part-of: tanzu-java-web-app\n        apps.tanzu.vmware.com/has-tests:
+        \"true\"\n        apps.tanzu.vmware.com/use-sonarqube: \"true\"\n        apps.tanzu.vmware.com/workload-type:
+        web\n        app.kubernetes.io/component: run\n        carto.run/workload-name:
+        tanzu-java-web-app\n    spec:\n      template:\n        metadata:\n          annotations:\n
+        \           autoscaling.knative.dev/minScale: \"1\"\n            boot.spring.io/version:
+        2.5.8\n            conventions.carto.run/applied-conventions: |-\n              appliveview-sample/app-live-view-appflavour-check\n
+        \             spring-boot-convention/auto-configure-actuators-check\n         "
+    stampedRef:
+      apiVersion: v1
+      kind: ConfigMap
+      name: tanzu-java-web-app-with-api-descriptors
+      namespace: my-space
+      resource: configmaps
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterConfigTemplate
+      name: api-descriptors
+  - conditions:
+    - lastTransitionTime: "2024-01-02T00:59:13Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2024-01-02T06:20:40Z"
+      message: ""
+      reason: ReadyCondition
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2024-01-02T06:20:40Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    inputs:
+    - name: api-descriptors
+    name: config-writer
+    stampedRef:
+      apiVersion: carto.run/v1alpha1
+      kind: Runnable
+      name: tanzu-java-web-app-config-writer
+      namespace: my-space
+      resource: runnables.carto.run
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterTemplate
+      name: config-writer-template
+  - conditions:
+    - lastTransitionTime: "2023-12-29T05:28:07Z"
+      message: ""
+      reason: ResourceSubmissionComplete
+      status: "True"
+      type: ResourceSubmitted
+    - lastTransitionTime: "2023-12-29T05:28:07Z"
+      message: ""
+      reason: AlwaysHealthy
+      status: "True"
+      type: Healthy
+    - lastTransitionTime: "2023-12-29T05:28:07Z"
+      message: ""
+      reason: Ready
+      status: "True"
+      type: Ready
+    name: deliverable
+    stampedRef:
+      apiVersion: carto.run/v1alpha1
+      kind: Deliverable
+      name: tanzu-java-web-app
+      namespace: my-space
+      resource: deliverables.carto.run
+    templateRef:
+      apiVersion: carto.run/v1alpha1
+      kind: ClusterTemplate
+      name: deliverable-template
+  supplyChainRef:
+    kind: ClusterSupplyChain
+    name: source-test-scan-to-url
