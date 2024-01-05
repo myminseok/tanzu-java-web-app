@@ -10,6 +10,10 @@ metadata:
     - tanzu
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-web-app'
+    ## refer to https://github.com/myminseok/tap-catalog/blob/main/blank/groups/user-myminseok.yml
+    backstage.tanzu.vmware.com/group.default.default-team: 'catalog.entities.read,catalog.entities.update'
+    backstage.tanzu.vmware.com/group.default.viewer: 'catalog.entities.read'
+    backstage.tanzu.vmware.com/group.default.editor: 'catalog.entities.read,catalog.entities.update'
   links:
     - url: http://tanzu-python-web.apps.tap.lab.pcfdemo.net
       title: tanzu-python-web
@@ -17,5 +21,5 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: default-team
+  owner: default-team  ## it did not take any effect for RBAC.
   system: python-web-app

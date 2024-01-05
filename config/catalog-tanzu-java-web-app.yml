@@ -10,6 +10,7 @@ metadata:
     - tanzu
   annotations: 
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=tanzu-java-web-app'
+    ## refer to https://github.com/myminseok/tap-catalog/blob/main/blank/groups/user-myminseok.yml
     backstage.tanzu.vmware.com/group.default.default-team: 'catalog.entities.read,catalog.entities.update'
     backstage.tanzu.vmware.com/group.default.devops-team: 'catalog.entities.read,catalog.entities.update'
     backstage.tanzu.vmware.com/group.default.viewer: 'catalog.entities.read'
