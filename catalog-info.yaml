@@ -12,6 +12,7 @@ metadata:
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=tanzu-java-web-app'
     backstage.tanzu.vmware.com/user.default.guest: 'catalog.entities.read,catalog.entities.update'
+    backstage.tanzu.vmware.com/user.my-space.guest: 'catalog.entities.read,catalog.entities.update'
   links:
     - url: http://tanzu-java-web-app.default.apps.tap.lab.pcfdemo.net
       title: tanzu-java-web-app
