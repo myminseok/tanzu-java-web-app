@@ -11,8 +11,10 @@ metadata:
   annotations: 
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=tanzu-java-web-app'
     backstage.tanzu.vmware.com/group.default.default-team: 'catalog.entities.read,catalog.entities.update'
+    backstage.tanzu.vmware.com/group.default.devops-team: 'catalog.entities.read,catalog.entities.update'
     backstage.tanzu.vmware.com/group.default.viewer: 'catalog.entities.read'
     backstage.tanzu.vmware.com/group.default.editor: 'catalog.entities.read,catalog.entities.update'
+
   links:
     - url: http://tanzu-java-web.apps.tap.lab.pcfdemo.net
       title: tanzu-java-web-app
@@ -20,5 +22,5 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: default-team
+  owner: default-team  ## it did not take any effect for RBAC.
   system: tanzu-java-web-app
