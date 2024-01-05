@@ -20,6 +20,6 @@ metadata:
 spec:
   type: service
   lifecycle: experimental #production
-  owner: default-team
+  owner: devops-team
   system: tanzu-java-web-app # tap-gui
 
