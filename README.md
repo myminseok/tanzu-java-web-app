@@ -1,7 +1,7 @@
 # tanzu-java-web-app
 
 
-This is a sample of a Java Spring app that works with Tilt and the Tanzu Application Platform.
+This is a sample of a Java Spring app that works with Tilt and the Tanzu Application Platform. v1
 
 ## Dependencies
 1. [kubectl CLI](https://kubernetes.io/docs/tasks/tools/)
